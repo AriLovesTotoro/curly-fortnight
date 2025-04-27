@@ -88,7 +88,7 @@
 
     .logo-container {
       display: flex;
-      justify-content: center;
+      text-align: center; /* Center anything inside */
       padding-top: 20px;
     }
     
@@ -96,6 +96,7 @@
       width: 150px;
       height: auto;
       max-width: 80%; /* Makes sure it's not too big on small screens */
+      display: inline-block; /* So it behaves correctly inside text-align: center */
     }
 
 
