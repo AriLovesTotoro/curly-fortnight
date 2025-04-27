@@ -741,7 +741,27 @@
       form.addEventListener('submit', function(e) {
         // Update the location field before submission
         updateLocation();
-        
+        const playersContainer = document.getElementById('players-container');
+        const playerSections = playersContainer.getElementsByClassName('player-section');
+    
+        const playersData = [];
+      
+        for (let i = 0; i < playerSections.length; i++) {
+        const playerSection = playerSections[i];
+        const player = {
+          name: playerSection.querySelector(`input[name="player_name_${i}"]`)?.value || '',
+          dob: playerSection.querySelector(`input[name="player_dob_${i}"]`)?.value || '',
+          id: playerSection.querySelector(`input[name="player_id_${i}"]`)?.value || '',
+          rank: playerSection.querySelector(`select[name="player_rank_${i}"]`)?.value || '',
+          height: playerSection.querySelector(`input[name="player_height_${i}"]`)?.value || '',
+          position: playerSection.querySelector(`input[name="player_position_${i}"]`)?.value || ''
+          // Note: Images cannot be sent like this easily, unless you do file uploads separately
+        };
+        playersData.push(player);
+        }
+
+        // Set collected players info into the hidden input
+        document.getElementById('players_data').value = JSON.stringify(playersData);
         // Validate the location field to ensure it meets requirements
         const locationField = document.getElementById('team_location');
         if (!locationField.value || locationField.value.length < 2 || locationField.value.length > 100) {
@@ -901,31 +921,6 @@
           createErrorDiv(captainField.parentNode);
       }
     });
-
-
-    document.getElementById('registration-form').addEventListener('submit', function(event) {
-      const playersContainer = document.getElementById('players-container');
-      const playerSections = playersContainer.getElementsByClassName('player-section');
-  
-      const playersData = [];
-    
-      for (let i = 0; i < playerSections.length; i++) {
-        const playerSection = playerSections[i];
-        const player = {
-          name: playerSection.querySelector(`input[name="player_name_${i}"]`)?.value || '',
-          dob: playerSection.querySelector(`input[name="player_dob_${i}"]`)?.value || '',
-          id: playerSection.querySelector(`input[name="player_id_${i}"]`)?.value || '',
-          rank: playerSection.querySelector(`select[name="player_rank_${i}"]`)?.value || '',
-          height: playerSection.querySelector(`input[name="player_height_${i}"]`)?.value || '',
-          position: playerSection.querySelector(`input[name="player_position_${i}"]`)?.value || ''
-          // Note: Images cannot be sent like this easily, unless you do file uploads separately
-        };
-        playersData.push(player);
-    }
-
-  // Set collected players info into the hidden input
-  document.getElementById('players_data').value = JSON.stringify(playersData);
-});
 
   </script>
 </head>
