@@ -20,7 +20,7 @@
     }
     
     body {
-      background-color: #ADADAD;
+      background-color: #565656;
     }
     
     /* Mobile date input styling */
@@ -94,6 +94,18 @@
       border-bottom: 1px solid var(--tblr-border-color);
     }
     
+    .page-header {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .header-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover; /* optional: crops it nicely if needed */
+    }
+
     /* Form elements */
     .form-label {
       margin-bottom: 0.25rem;
@@ -927,15 +939,11 @@
 <body class="theme-light">
   <div class="page page-center py-4">
     <div class="container container-custom">
-      <div class="d-flex flex-column align-items-center position-relative mb-4" style="max-width: 800px; margin: auto;">
-          <h1 class="h2 mb-3 text-center">Европ дахь монголчуудын волейболын аварга шалгаруулаx Мастер 2025 
-            шилжин явах цомын анх дугаар тэмцээний мэдүүлэг</h1>
+      <div class="page-header">
+        <img src="/Volleyball.jpg" alt="Description" class="header-image">
       </div>
-      <header class="py-4" style="background-color: #ADADAD;">
-        <div class="container d-flex justify-content-center">
-          <img src="/VolleyballLogo.jpg" alt="Header Image" class="img-fluid rounded" style="max-width: 25%;">
-        </div>
-      </header>
+
+      
       <form id="registration-form" name="register" method="POST" data-netlify="true" accept-charset="UTF-8" action="/thanks.html">
         <input type="hidden" name="form-name" value="register" />
         <input type="hidden" name="players_data" id="players_data">
